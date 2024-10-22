@@ -1,5 +1,6 @@
 # Spring Security With JWT Implementation
 
+## Let's understand what does these classes do 
 
 ### JwtUtils
 
@@ -17,7 +18,7 @@ This **AuthEntryPointJwt** class is a Spring security component that handles una
 
 This **LoginController** class is a Spring REST controller that handles user authentication requests. It exposes a **/signin** endpoint that accepts a **LoginRequest** object containing the username and password. The controller uses the **AuthenticationManager** to authenticate the user credentials, and if successful, generates a JSON Web Token (JWT) using the **JwtUtils** class. The JWT is then returned in a **LoginResponse** object along with the user's username and roles. If the authentication fails, the controller returns a response with a "Bad credentials" message and a 404 status code. The authenticated user's details are also stored in the **SecurityContextHolder** for subsequent requests.
 
-## SecurityConfig
+### SecurityConfig
 
 This **SecurityConfig** class is a Spring configuration class that sets up the security configuration for a Spring application. It defines the security rules for different URL paths and roles. It configures the **JwtFilter** to authenticate incoming requests and the **AuthEntryPointJwt** to handle unauthorized requests. It also sets up the **authenticationManager** bean to handle user authentication using the **DaoAuthenticationProvider** and **BCryptPasswordEncoder**. The **filterChain** method configures the security filter chain, disabling CSRF protection, using stateless session management, and setting the **authenticationEntryPoint** to the **unauthorizedHandler**. The configuration also allows access to the H2 console and the **/signin** endpoint for all users.
 
